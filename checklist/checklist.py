@@ -22,8 +22,12 @@ def list_all_items():
         print(str(index) + list_item)
         index += 1
 
-def mark_completed(index):
-    # insert code here
+# def mark_completed(index):
+#     # insert code here
+
+def user_input(prompt):
+    user_input = input(prompt)
+    return user_input
 
 def select(function_code):
     # create item
@@ -38,12 +42,11 @@ def select(function_code):
     elif function_code == "P":
         list_all_items()
 
+    elif function_code == "Q":
+        return False
     else:
         print("Unknown Option")
-
-def user_input(prompt):
-    user_input = input(prompt)
-    return user_input
+    return True
 
 def test():
     checklist.append("purple sox")
@@ -72,3 +75,9 @@ def test():
     print(user_value)
 
 test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add to list, R to Read from list, P to display list, and Q to quit")
+    select(selection)
