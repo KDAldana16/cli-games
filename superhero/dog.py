@@ -8,10 +8,10 @@ class Dog:
     def bark(self):
         print("Woof!")
 
-    def rollover(name):
+    def rollover(self):
         print("<<dog.name>> rolls over")
 
-    def sit(name):
+    def sit(self):
         print("<<dog.name>> sits")
 
 # instantiation call that creates a Dog object:
