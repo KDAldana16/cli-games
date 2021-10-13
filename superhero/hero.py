@@ -182,4 +182,6 @@ class Team:
 
         def add_hero(self, hero)
         '''Add Hero object to self.heroes.'''
-        pass        
+        pass
+
+                
