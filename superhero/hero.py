@@ -18,6 +18,7 @@ class Hero:
     def fight(self, opponent):
         ''' Current Hero will take turn fighting the opponet hero passed in.
         '''
+        pass
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
@@ -60,11 +61,21 @@ class Hero:
         '''Add weapon to self.abilities'''
         pass
 
+    def add_kill(self, num_kills):
+        '''Update self.kills by num_kills amount'''
+        self.kills += num_kills
+
+    def add_death(self, num_deaths):
+        '''Update deaths with num_deaths'''
+        pass
+
     self.abilities = list()
     self.armors = list()
     self.name = name
     self.starting_health = starting_health
     self.current_health = starting_health
+    self.deaths = 0
+    self.kills = 0
 
 if __name__ == "__main__":
     ability = Ability("Great Debugging", 50)
@@ -181,7 +192,29 @@ class Team:
             pass
 
         def add_hero(self, hero)
-        '''Add Hero object to self.heroes.'''
+        ''Add Hero object to self.heroes''
         pass
 
-                
+        def stats(self):
+            '''Print team statistics'''
+            for hero in self.heroes:
+                kd = hero.kills / hero.deaths
+                print("{} Kill/Deaths:{}".format(hero.name,kd))
+
+        def revive_heroes(self, health=100):
+            '''Reset all heroes health to starting_health'''
+            pass
+
+        def attack(self, other_team):
+            '''Battle each team against each other.'''
+
+            living_heroes = list()
+            living_opponents = list()
+
+            for hero in self.heroes:
+                living_heroes.append(hero)
+
+            for hero in other_team.heroes:
+                living_opponents.append(hero)
+
+            while len(living_heroes) > 0 and len(living_opponents)> 0:
