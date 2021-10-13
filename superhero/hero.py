@@ -1,4 +1,5 @@
 import random
+import weapon import Weapon
 
 random.randint(2, 7)
 
@@ -55,6 +56,10 @@ class Hero:
         '''
         pass
 
+    def add_weapon(self, weapon):
+        '''Add weapon to self.abilities'''
+        pass
+
     self.abilities = list()
     self.armors = list()
     self.name = name
@@ -78,6 +83,9 @@ if __name__ == "__main__":
     print(my_hero.name)
     print(my_hero.current_health)
     hero1 = Hero("Wonder Woman")
+    weapon = Weapon("Lasso of Truth", 90)
+    hero.add_weapon(weapon)
+    print(hero.attack())
     hero2 = Hero("Dumbledore")
     ability1 = Ability("Super Speed", 300)
     ability2 = Ability("Super Eyes", 130)
@@ -128,3 +136,50 @@ class Armor:
         armor = Armos("Debugging Shield", 10)
         print(armor.name)
         print(armor.block())
+
+class Animal:
+    def __init__(self, name, sleep_duration):
+        self.name = name
+        self.sleep_duration = sleep_duration
+
+    def sleep(self):
+        print(
+            "{} sleeps for {} hours {}".format(
+                self.name,
+                self.sleep_duration))
+
+class Dog(Animal):
+    def bark(self):
+        print("Woof! Woof!")
+
+    my_dog = Dog("Sophie", 12)
+    my_dog.sleep()
+    my_dog.bark()
+
+class Team:
+    def __init__(self, name):
+        '''Initialize your team with its team name and an empty list of heroes
+        '''
+        self.name = name
+        self.heroes = list()
+
+    def remove_hero(self, name):
+        '''Remove hero from heroes list.
+        If Hero isn't found return 0.
+        '''
+
+        foundHero = False
+        for hero in self.heroes:
+            if hero.name == name:
+                self.heroes.remove(hero)
+                foundHero = True
+        if not foundHero:
+            return 0
+
+        def view_all_heroes(self):
+            '''Prints out all heroes to the console.'''
+            pass
+
+        def add_hero(self, hero)
+        '''Add Hero object to self.heroes.'''
+        pass        
