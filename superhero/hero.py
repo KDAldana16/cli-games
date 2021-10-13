@@ -2,9 +2,14 @@ import random
 
 random.randint(2, 7)
 
+from ability import Ability
+from armor import Armor
+
 class Hero:
     def __init__(self, name, starting_health=100):
         '''Instance properties:
+          abilities: List
+          armors: List
           name: String
           starting_health: Integer
           current_health: Integer
@@ -13,16 +18,34 @@ class Hero:
         ''' Current Hero will take turn fighting the opponet hero passed in.
         '''
 
+    def add_ability(self, ability):
+        ''' Add ability to abilities list '''
+        self.abilities.append(ability)
+
+    def attack(self):
+        '''Calculate the total damage from all ability attaacks.
+            return: total_damage:Int
+        '''
+        total_damage = 0
+            for ability in self.abilities:
+                total_damage += ability.attack()
+            return total_damage
+
+    self.abilities = list()
+    self.armors = list()
     self.name = name
     self.starting_health = starting_health
     self.current_health = starting_health
 
 if __name__ == "__main__":
+    ability = Ability("Great Debugging", 50)
     my_hero = Hero("Grace Hopper", 200)
+    hero.add_ability(ability)
+    print(hero.abilities)
     print(my_hero.name)
     print(my_hero.current_health)
     hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")
+    hero2 = Hero("Dumbledore")x`
 
     hero1.fight(hero2)
 
