@@ -31,6 +31,30 @@ class Hero:
                 total_damage += ability.attack()
             return total_damage
 
+    def add_armor(self, armor):
+        '''Add armor to self.armors
+        Armor: Armor Object
+        '''
+
+    def defend(self):
+        '''Calculate the total block amount from all armor blocks.
+        return: total_block:Int
+        '''
+
+    def take_damage(self, damage):
+        '''Updates self.current_health to reflect the damage minus the defense.
+        '''
+
+    def is_alive(self):
+        '''Return True or False depending on whether the hero is alive or not.
+        '''
+        pass
+
+    def fight(self, opponent):
+        '''Current Hero will take turns fighting the opponent hero passed in.
+        '''
+        pass
+
     self.abilities = list()
     self.armors = list()
     self.name = name
@@ -39,15 +63,34 @@ class Hero:
 
 if __name__ == "__main__":
     ability = Ability("Great Debugging", 50)
-    my_hero = Hero("Grace Hopper", 200)
+    another_ability = Ability("Smarty Pants", 90)
+    hero = Hero("Grace Hopper", 200)
+    hero.take_damage(150)
+    print(hero.is_alive())
+    hero.take_damage(15000)
+    print(hero.is_alive())
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
     hero.add_ability(ability)
+    hero.add_ability(another_ability)
+    print(hero.current_health())
     print(hero.abilities)
     print(my_hero.name)
     print(my_hero.current_health)
     hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")x`
-
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
     hero1.fight(hero2)
+
+
+
 
 class Ability:
     def __init__(self, name, max_damage):
