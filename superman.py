@@ -1,32 +1,47 @@
 import random
 
-def load_word():
-    f = open('words.txt', 'r')
-    words_list = f.readlines()
-    f.close()
+name = input("What is your name? ")
 
-    words_list = words.list[0].split(' ')
-    secret_word = random.choice(words_list)
-    return secret_word
+print("Good Luck ! ", name)
 
-def is_word_guessed(secret_word, letters_guessed):
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+words = ['lily', 'llama', 'calendar', 'graduation', 'computing', 'notebook',
+        'pajamas', 'oxen', 'telephone']
 
-def get_guessed_word(secret_word, letters_guessed):
-    # TODO loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-    pass
+word = random.choice(words)
 
-def is_guess_in_word(guess, secret_word):
-    # TODO: check if the letter guess is in the secret word
-    pass
+print("Guess the characters")
 
-def spaceman(secret_word):
-    #TODO: show the player information about the game according to the project spec
-    #TODO: ask the player to guess one letter per round and check that it is only one letter
-    #TODO: check if the guessed letter is in the secret or not and give the player feedback
-    #TODO: show the guessed word so far
-    #TODO: check if the game has been won or lost
+guesses = ''
 
-secret_word = load_word()
-spaceman(secret_word)
+turns = 12
+
+while turns > 0:
+    failed = 0
+
+    for char in word:
+        if char in guesses:
+            print(char)
+
+        else:
+            print("_")
+
+            failed += 1
+
+    if failed == 0:
+        print("You Win")
+
+        print("The word is: ", word)
+        break
+
+    guess = input("guess a character:")
+
+    guesses += guess
+
+    if guess not in word:
+        turns -= 1
+        print("Wrong")
+
+        print("You have", + turns, 'more guesses')
+
+        if turns == 0:
+            print("You Lose")
