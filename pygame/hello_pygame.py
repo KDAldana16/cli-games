@@ -36,7 +36,7 @@ while running:
 
     #Draw some text
     font = pygame.font.SysFont(None, 40)
-    text_img = text.render('Hello, World!', True, GREEN)
+    text_img = font.render('Hello, World!', True, GREEN)
     screen.blit(text_img, (200, 100))
 
     # Update the game display
