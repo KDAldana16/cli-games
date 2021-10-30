@@ -29,8 +29,8 @@ target_x = 250
 target_y = 0
 
 # Enemy variables
-enemy_x = 50
-enemy_y = 50
+enemy_x = 75
+enemy_y = 75
 
 # Other variables
 velocity = 3
@@ -75,7 +75,7 @@ while running:
     #Update the player
     if keys[pygame.K_LEFT]:
         player_x -= velocity
-    if kets[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT]:
         player_x += velocity
     if keys[pygame.K_UP]:
         player_y -= velocity
@@ -86,14 +86,30 @@ while running:
     target_y += velocity
 
     #TODO: Update the enemy's y position based on its velocity
+    enemy_y += velocity
 
     #If target went off the screen, reset it
     if target_y > SCREEN_HEIGHT:
         target_y = 0
         target_x = random.random() * (SCREEN_WIDTH - CHARACTER_WIDTH)
 
-    #TODO: If player collides with enemy, reset it & set points to 0
+    #If enemy went off the screen, reset it
+    if enemy_y > SCREEN_HEIGHT:
+        enemy_y = 0
+        enemy_x = random.random() * (SCREEN_WIDTH - CHARACTER_WIDTH)
 
+    #TODO: If player collides with target, reset it & set points to 0
+    if is_colliding(player_x, player_y, target_x, target_y, CHARACTER_WIDTH, CHARACTER_HEIGHT):
+        points += 1
+        target_y = 0
+        target_x = random.random() * (SCREEN_WIDTH - CHARACTER_WIDTH)
+
+    #TODO: If player collides with enemy, reset it & set points to 0
+    if is_colliding(player_x, player_y, enemy_x, enemy_y, CHARACTER_WIDTH, CHARACTER_HEIGHT):
+        points = 0
+        enemy_y = 0
+        enemy_x = random.random() * (SCREEN_WIDTH - CHARACTER_WIDTH)
+        
     #Fill screen with white
     screen.fill(WHITE)
 
